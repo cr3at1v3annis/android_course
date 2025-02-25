@@ -122,3 +122,4 @@ fun printInfoAboutCity(cityName: String, lowTemp: Int, highTemp: Int, chanceOfRa
     println("Chance of rain: $chanceOfRain %")
     println()
 }
+
