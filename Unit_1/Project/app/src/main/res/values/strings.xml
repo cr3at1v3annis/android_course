@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Unit_1_Project</string>
+    <string name="title_desc">No name logo</string>
+    <string name="title">Our company</string>
+    <string name="name">No name company</string>
+    <string name="phone">+00 (000) 000 00</string>
+    <string name="contact">\@nonamecompany</string>
+    <string name="email">noname@noname.noname</string>
+</resources>
