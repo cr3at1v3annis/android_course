@@ -1,5 +1,6 @@
 package com.example.unit_1_practice
 
+import android.graphics.Color
 import android.graphics.drawable.shapes.Shape
 import android.os.Bundle
 import android.widget.ImageView
@@ -106,13 +107,37 @@ fun ThirdTask(modifier: Modifier = Modifier) {
             }
         }
     }
+}
 
+@Composable
+fun ThirdTaskSecondVariance(modifier: Modifier = Modifier) {
+    Column(modifier = modifier.fillMaxWidth()) {
+        Row(modifier = modifier.weight(1.0f)) {
+            CustomCard(modifier.weight(1.0f), title = stringResource(R.string.task3_1), description = stringResource(R.string.task3_2), color = R.color.color3_1 )
+            CustomCard(modifier.weight(1.0f), title = stringResource(R.string.task3_3), description = stringResource(R.string.task3_4), color = R.color.color3_2 )
+        }
+        Row(modifier = modifier.weight(1.0f)) {
+            CustomCard(modifier.weight(1.0f), title = stringResource(R.string.task3_5), description = stringResource(R.string.task3_6), color = R.color.color3_3 )
+            CustomCard(modifier.weight(1.0f), title = stringResource(R.string.task3_7), description = stringResource(R.string.task3_8), color = R.color.color3_4 )
+        }
+    }
+}
+@Composable
+fun CustomCard(modifier: Modifier, title: String, description: String, color : Int) {
+    Column(
+        modifier = modifier.fillMaxHeight().background(colorResource(color)).padding(16.dp),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
+        Text(text = title, modifier = Modifier.padding(16.dp), fontWeight = FontWeight.Bold)
+        Text(text = description)
+    }
 }
 
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
     Unit_1_PracticeTheme {
-        ThirdTask()
+        ThirdTaskSecondVariance()
     }
 }
