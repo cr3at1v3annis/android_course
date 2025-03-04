@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Unit_2_Project</string>
+    <string name="first_paint_name">Девятый вал</string>
+    <string name="first_paint_author">Айвазовский</string>
+    <string name="first_paint_desc">Девятый вал Айвазовский</string>
+    <string name="second_paint_name">Путь в ночи</string>
+    <string name="second_paint_author">Куинджи</string>
+    <string name="second_paint_desc">Путь в ночи Куинджи</string>
+    <string name="third_paint_name">Пшеничное поле с воронами</string>
+    <string name="third_paint_author">Ван Гог</string>
+    <string name="third_paint_desc">Пшеничное поле с воронами Ван Гог</string>
+</resources>
