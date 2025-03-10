@@ -97,9 +97,10 @@ fun BookCard(book: Book, modifier: Modifier = Modifier) {
         modifier = modifier,
         elevation = CardDefaults.cardElevation(defaultElevation = 8.dp)
     ) {
+        Text(text = book.volumeInfo.imageLinks.thumbnail)
         AsyncImage(
             model = ImageRequest.Builder(context = LocalContext.current)
-                .data(book.imgSrc)
+                .data(book.volumeInfo.imageLinks.thumbnail)
                 .crossfade(true)
                 .build(),
             contentDescription = stringResource(R.string.books_photo),
@@ -119,20 +120,19 @@ fun PhotosGridScreen(
     modifier: Modifier = Modifier,
     contentPadding: PaddingValues = PaddingValues(0.dp),
 ) {
-    Text(text=photos.totalItens.toString())
-//    LazyVerticalGrid(
-//        columns = GridCells.Adaptive(150.dp),
-//        modifier = modifier.padding(horizontal = 4.dp),
-//        contentPadding = contentPadding,
-//    ) {
-//        items(items = photos, key = { photo -> photo.id }) {
-//                photo -> BookCard(photo, modifier = modifier
-//            .padding(4.dp)
-//            .fillMaxWidth()
-//            .aspectRatio(1.5f)
-//        )
-//        }
-//    }
+    LazyVerticalGrid(
+        columns = GridCells.Adaptive(150.dp),
+        modifier = modifier.padding(horizontal = 4.dp),
+        contentPadding = contentPadding,
+    ) {
+        items(items = photos.items, key = { photo -> photo.id }) {
+                photo -> BookCard(photo, modifier = modifier
+            .padding(4.dp)
+            .fillMaxWidth()
+            .aspectRatio(1.5f)
+        )
+        }
+    }
 }
 
 @Preview(showBackground = true)
