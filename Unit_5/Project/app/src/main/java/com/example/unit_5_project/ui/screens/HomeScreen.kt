@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -78,36 +79,22 @@ fun ErrorScreen(retryAction: () -> Unit, modifier: Modifier = Modifier) {
 }
 
 
-/**
- * ResultScreen displaying number of photos retrieved.
- */
-@Composable
-fun ResultScreen(photos: String, modifier: Modifier = Modifier) {
-    Box(
-        contentAlignment = Alignment.Center,
-        modifier = modifier
-    ) {
-        Text(text = photos)
-    }
-}
-
 @Composable
 fun BookCard(book: Book, modifier: Modifier = Modifier) {
     Card(
-        modifier = modifier,
+        modifier = modifier.height(300.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 8.dp)
     ) {
-        Text(text = book.volumeInfo.imageLinks.thumbnail)
         AsyncImage(
             model = ImageRequest.Builder(context = LocalContext.current)
-                .data(book.volumeInfo.imageLinks.thumbnail)
+                .data(book.volumeInfo.imageLinks.thumbnail.replace("http", "https"))
                 .crossfade(true)
                 .build(),
             contentDescription = stringResource(R.string.books_photo),
             contentScale = ContentScale.Crop,
             error = painterResource(R.drawable.ic_broken_image),
             placeholder = painterResource(R.drawable.loading_img),
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxSize()
         )
     }
 
@@ -121,15 +108,14 @@ fun PhotosGridScreen(
     contentPadding: PaddingValues = PaddingValues(0.dp),
 ) {
     LazyVerticalGrid(
-        columns = GridCells.Adaptive(150.dp),
+        columns = GridCells.Adaptive(200.dp),
         modifier = modifier.padding(horizontal = 4.dp),
         contentPadding = contentPadding,
     ) {
         items(items = photos.items, key = { photo -> photo.id }) {
                 photo -> BookCard(photo, modifier = modifier
             .padding(4.dp)
-            .fillMaxWidth()
-            .aspectRatio(1.5f)
+            .fillMaxSize()
         )
         }
     }
